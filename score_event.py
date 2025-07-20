@@ -53,6 +53,7 @@ class ScoreEvent:
         self._points = value
         #đưa giá trị vào _minute thay vì minute
 
+
     def get_description(self):
         return f"""
 Thời gian ghi điểm: {self.minute}
