@@ -4,16 +4,23 @@ from datetime import datetime
 
 class Player:
     def __init__(self, player_id, name, number, position, dob, performance_score):
-        self._player_id = player_id
+        self.player_id = player_id
         self._name = name
-        self._number = number
+        self.number = number
         self._position = position
         self._dob = dob
         self.performance_score = performance_score
 
     @property
     def player_id(self):
-        return self._player_id
+        return self._player_id if hasattr(self,"_player_id") else None
+    @player_id.setter
+    def player_id(self,p_id):
+        try:
+            p_id = int(p_id)
+        except ValueError:
+            raise ValueError("ID cầu thủ không hợp lệ.")
+        self._player_id = p_id
 
     @property
     def name(self):
@@ -21,7 +28,14 @@ class Player:
 
     @property
     def number(self):
-        return self._number
+        return self._number if hasattr(self,"_number") else None
+    @number.setter
+    def number(self,num):
+        try:
+            num = int(num)
+        except ValueError:
+            raise ValueError("Số áo cầu thủ không hợp lệ.")
+        self._number = num
 
     @property
     def position(self):
@@ -42,7 +56,7 @@ class Player:
             raise ValueError("Điểm phong độ không hợp lệ.")
         self._performance_score = value
 
-
+#------------------------------------------------------------------------------------
     def update_performance(self, score):
         self._performance_score = score
 
@@ -52,6 +66,6 @@ class Player:
         #     raise ValueError("Ngày tháng không hợp lệ.")
         birth_date = datetime.strptime(self.dob, "%Y-%m-%d")
         today = datetime.today()
-        age = today.year - birth_date.year
+        return today.year - birth_date.year
 
 

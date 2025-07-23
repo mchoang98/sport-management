@@ -15,7 +15,6 @@ class ScoreEvent:
     def minute(self):
         return self._minute if hasattr(self, "_minute") else None
     # trả về nếu có attribute _minute
-
     @minute.setter
     def minute(self, value):
         # value: phút
@@ -32,8 +31,7 @@ class ScoreEvent:
 
     @property
     def player(self):
-        return self._player if self._player else None
-    # Trả về None nếu không có
+        return self._player
 
     @property
     def score_type(self):
@@ -43,7 +41,6 @@ class ScoreEvent:
     def points(self):
         return self._points if hasattr(self, "_points") else None
     # trả về nếu có attribute _points
-
     @points.setter
     def points(self, value):
         try:
