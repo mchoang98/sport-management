@@ -40,6 +40,10 @@ class Match():
     def location(self):
         return self._location
 
+    @property
+    def score_events(self):
+        return self._score_events
+
 #------------------------------------------------------------------------------------
 
     """
@@ -62,13 +66,11 @@ class Match():
         return self.team1 if score1 > score2 else (self.team2 if score1 < score2 else "Draw")
 
     def print_match_summary(self):
-        return f"""
-ID trận đấu: {self.match_id}
+        return f"""ID trận đấu: {self.match_id}
 Trận đấu giữa 2 đội:
     {self.team1.name} ({self.team1.team_id}) vs {self.team2.name} ({self.team2.team_id})
 Ngày diễn ra: {self.date}
-Địa điểm: {self.location}
-"""
+Địa điểm: {self.location}"""
 
 
 

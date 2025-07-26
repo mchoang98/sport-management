@@ -34,6 +34,10 @@ class Team():
     def coach(self):
         return self._coach
 
+    @property
+    def players(self):
+        return self._players
+
 #------------------------------------------------------------------------------------
     def add_player(self, player: Player):
         self._players.append(player)

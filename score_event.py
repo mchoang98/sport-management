@@ -1,7 +1,8 @@
-
+from Player import Player
+from Team import Team
 
 class ScoreEvent:
-    def __init__(self, minute, team,player, score_type, points):
+    def __init__(self, minute, team:Team, player:Player, score_type, points):
         self.minute = minute
         # thời gian ghi bàn, chạy setter "minute"
         self._team = team
