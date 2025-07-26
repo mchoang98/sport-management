@@ -1,5 +1,5 @@
-from Score_event import ScoreEvent
-from Team import Team
+from score_event import ScoreEvent
+from team import Team
 
 class Match():
     def __init__(self, match_id, team1: Team, team2:Team, date, location):

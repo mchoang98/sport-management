@@ -1,5 +1,5 @@
-from Team import Team
-from Match import Match
+from team import Team
+from match import Match
 
 class SportMatchManager:
     def __init__(self):

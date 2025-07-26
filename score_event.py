@@ -1,5 +1,5 @@
-from Player import Player
-from Team import Team
+from player import Player
+from team import Team
 
 class ScoreEvent:
     def __init__(self, minute, team:Team, player:Player, score_type, points):
