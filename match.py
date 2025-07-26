@@ -73,12 +73,19 @@ Ngày diễn ra: {self.date}
 Địa điểm: {self.location}"""
 
 
+    @property
+    def get_winner(self):
+        if self.team1.points > self.team2.points:
+            return f"{self.team1} Win"
 
+        elif self.team1.points < self.team2.points:
+            return f"{self.team2} Win"
 
+        else:
+            return "Draw"
 
-
-
-
+    def print_match_summary(self):
+        return f"Tỉ số:{self.get_score}roperty\nĐội thắng:{self.get_winner}"
 
 
 
