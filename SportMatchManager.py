@@ -39,5 +39,8 @@ class SportMatchManager:
         for match in self.matches:
             for score in match.score_events:
                 if match in total_points:
-                    total_points[match] += 
+                    total_points[match] += score.points
+                else:
+                    total_points[match] = score.points
+        return max(total_points, key=lambda match: total_points[match])
 
