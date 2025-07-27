@@ -12,8 +12,8 @@ class SportMatchManager:
     def get_team_by_name(self, name: str):
         for team in self.teams:
             if team.name == name:
-                return team
-        return None
+                return True    #Chỗ này em chỉnh thành ra true/false 
+        return False
 
     def schedule_match(self,match:Match):
         self.matches.append(match)

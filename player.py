@@ -44,6 +44,7 @@ class Player:
     @property
     def dob(self):
         return self._dob
+    
 
     @property
     def performance_score(self):
