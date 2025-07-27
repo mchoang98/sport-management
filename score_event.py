@@ -54,9 +54,8 @@ class ScoreEvent:
 
     def get_description(self):
         return f"""
-Thời gian ghi điểm: {self.minute}
-Đội ghi điểm: {self.team}
-Người ghi điểm: {self.player}
-Loại ghi điểm: {self.score_type}
-Số điểm ghi được: {self.points}
-"""
+|Thời gian: {self.minute} phút.
+|Đội: {self.team.name} - {self.team.team_id}.
+|Người ghi điểm: {self.player}.
+|Loại ghi điểm: {self.score_type}.
+|Số điểm: {self.points}."""

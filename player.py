@@ -43,18 +43,13 @@ class Player:
 
     @property
     def dob(self):
-<<<<<<< HEAD
-        return self._dob
-    
-=======
         return self._dob if hasattr(self,"_dob") else None
     @dob.setter
-    def dob(self,date):
+    def dob(self,d):
         pattern = r"^\d{4}-\d{2}-\d{2}$"
-        if not re.match(pattern,date):
+        if not re.match(pattern,d):
             raise ValueError("Ngày tháng không hợp lệ.")
-        self._dob = date
->>>>>>> 83ca6a8d9eb3fde09070fa7a13d1f854ac14b512
+        self._dob = d
 
     @property
     def performance_score(self):

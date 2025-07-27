@@ -3,17 +3,29 @@ from match import Match
 
 class SportMatchManager:
     def __init__(self):
-        self.teams = []
-        self.matches = []
+        self._teams = []
+        self._matches = []
+
+    @property
+    def teams(self):
+        return self._teams
+
+    @property
+    def matches(self):
+        return self._matches
 
     def add_team(self, team:Team):
         self.teams.append(team)
 
-    def get_team_by_name(self, name: str):
+    def get_team_by_id(self, f_id: str):          #đổi lại thành tìm bằng ID
+        try:
+            f_id = int(f_id)
+        except ValueError:
+            raise ValueError("ID đội không hợp lệ.")
         for team in self.teams:
-            if team.name == name:
-                return True    #Chỗ này em chỉnh thành ra true/false 
-        return False
+            if team.team_id == f_id:
+                return team
+        raise ValueError(f"Không tìm thấy đội có ID {f_id}")
 
     def schedule_match(self,match:Match):
         self.matches.append(match)

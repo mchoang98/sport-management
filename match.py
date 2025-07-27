@@ -1,5 +1,6 @@
 from score_event import ScoreEvent
 from team import Team
+import re
 
 class Match():
     def __init__(self, match_id, team1: Team, team2:Team, date, location):
@@ -9,13 +10,13 @@ class Match():
         self.match_id = match_id
         self._team1 = team1
         self._team2 = team2
-        self._date = date
+        self.date = date
         self._location = location
         self._score_events = []
 
     @property
     def match_id(self):
-        return self._match_id
+        return self._match_id if hasattr(self,"_match_id") else None
     @match_id.setter
     def match_id(self,m_id):
         try:
@@ -34,7 +35,13 @@ class Match():
 
     @property
     def date(self):
-        return self._date
+        return self._date if hasattr(self,"_date") else None
+    @date.setter
+    def date(self,d):
+        pattern = r"^\d{4}-\d{2}-\d{2}$"
+        if not re.match(pattern,d):
+            raise ValueError("Ngày tháng không hợp lệ.")
+        self._date = d
 
     @property
     def location(self):
@@ -68,7 +75,7 @@ class Match():
     def print_match_summary(self):
         return f"""ID trận đấu: {self.match_id}
 Trận đấu giữa 2 đội:
-    {self.team1.name} ({self.team1.team_id}) vs {self.team2.name} ({self.team2.team_id})
+    [Đội 1] {self.team1.name} ({self.team1.team_id}) vs {self.team2.name} ({self.team2.team_id}) [Đội 2]
 Ngày diễn ra: {self.date}
 Địa điểm: {self.location}"""
 

@@ -40,16 +40,21 @@ class Team():
 
 #------------------------------------------------------------------------------------
     def add_player(self, player: Player):
-        self._players.append(player)
+        self.players.append(player)
 
     def remove_player(self, player_id):
+        try:
+            player_id = int(player_id)
+        except ValueError:
+            raise ValueError("ID không hợp lệ.")
         print(f"Đang tìm kiếm ID {player_id}...")
-        for id in self._players:
-            if id.player_id == player_id:
-                self._players.remove(id)
-                print(f"Đã xoá cầu thủ {id.name}")
+        for r_id in self.players:
+            if r_id.player_id == player_id:
+                self.players.remove(r_id)
+                print(f"Đã xoá cầu thủ {r_id.name}")
             else:
                 print("Không tìm thấy cầu thủ")
+            time.sleep(0.5)
 
     def get_player_by_number(self, number):
         for num in self._players:
@@ -59,8 +64,7 @@ class Team():
                 print("không tìm thấy cầu thủ")
 
     def get_total_players(self):
-        so_thanh_vien = len(self._players)
-        return f"Số thành viên của đội là {so_thanh_vien}"
+        return f"Số thành viên: {len(self.players)}"
 
 
 

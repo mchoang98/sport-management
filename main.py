@@ -7,7 +7,7 @@ from team import Team
 
 
 def menu():
-    
+
     while True:
         print("\n----- MENU -----")
         print("1. Thành lập đội")
@@ -18,7 +18,7 @@ def menu():
         print("6. Thoát")
 
         chon = input("Chọn chức năng: ")
-            
+
         if chon == "1":
             pattern = r"^\d{4}-\d{2}-\d{2}$"
 
@@ -34,7 +34,7 @@ def menu():
                 so_ct = int(input("Nhập số áo cầu thủ: "))
                 vi_tri = str(input("Vị trí thi đấu: "))
                 day_ob = input("Ngày sinh: ")
-                
+
                 performance_score = float(input("Điểm phong độ"))
                 try:
                     doi_moi.add_player(Player(ma_ct, ten_ct, so_ct, vi_tri, day_ob, performance_score))
@@ -66,7 +66,7 @@ def menu():
             for i in SportMatchManager.teams:
                 print(i)
                 print("-------------------------")
-            
+
         elif chon == "4":
             ma_ct = str(input("Nhập mã cầu thủ: "))
             ten_ct = str(input("Nhập tên cầu thủ: "))
@@ -75,7 +75,7 @@ def menu():
             day_ob = input("Ngày sinh: ")
             pattern = r"^\d{4}-\d{2}-\d{2}$"
             if not re.match(pattern, day_ob):
-                raise ValueError("Ngày tháng không hợp lệ.") 
+                raise ValueError("Ngày tháng không hợp lệ.")
             performance_score = float(input("Điểm phong độ"))
             cau_thu_moi = Player(ma_ct, ten_ct, so_ct, vi_tri, day_ob, performance_score)
             doi_them = str(input("Nhập id đội muốn thêm"))
@@ -99,11 +99,11 @@ def menu():
                     print("Đã thêm khoảnh khắc")
                 else:
                     print("Đã không thêm được khoảnh khắc")
-                    
+
         elif chon == "6":
             print("Dừng lại chương trình")
             break
-        
+
 menu()
 
 
