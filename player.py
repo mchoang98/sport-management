@@ -1,5 +1,5 @@
 from datetime import datetime
-# import re
+import re
 
 
 class Player:
@@ -8,7 +8,7 @@ class Player:
         self._name = name
         self.number = number
         self._position = position
-        self._dob = dob
+        self.dob = dob
         self.performance_score = performance_score
 
     @property
@@ -43,8 +43,18 @@ class Player:
 
     @property
     def dob(self):
+<<<<<<< HEAD
         return self._dob
     
+=======
+        return self._dob if hasattr(self,"_dob") else None
+    @dob.setter
+    def dob(self,date):
+        pattern = r"^\d{4}-\d{2}-\d{2}$"
+        if not re.match(pattern,date):
+            raise ValueError("Ngày tháng không hợp lệ.")
+        self._dob = date
+>>>>>>> 83ca6a8d9eb3fde09070fa7a13d1f854ac14b512
 
     @property
     def performance_score(self):
@@ -62,9 +72,6 @@ class Player:
         self._performance_score = score
 
     def get_age(self):
-        # pattern = r"^\d{4}-\d{2}-\d{2}$"
-        # if not re.match(pattern,self.dob):
-        #     raise ValueError("Ngày tháng không hợp lệ.")
         birth_date = datetime.strptime(self.dob, "%Y-%m-%d")
         today = datetime.today()
         return today.year - birth_date.year
