@@ -54,6 +54,8 @@ def add(team):
     print(f"Đã thêm {counter} thành viên vào đội.")
     time.sleep(0.5)
 
+#================================================================================================================================================
+
 while True:
     choice = menu()
     if choice == "1":
@@ -74,11 +76,15 @@ while True:
             #--------------------------------------------------------------------------------------------------
             if user_team_choice == "1":
                 team_id = input("Nhập ID đội: ")
-                for team in SMM_sys.teams:
-                    if team_id == str(team.team_id):
-                        print("ID này đã tồn tại.")
-                        time.sleep(0.5)
-                        continue
+                # for team in SMM_sys.teams:
+                #     if team_id == str(team.team_id):
+                #         print("ID này đã tồn tại.")
+                #         time.sleep(0.5)
+                #         continue
+                if any(team_id == str(team.team_id) for team in SMM_sys.teams):
+                    print("ID này đã tồn tại.")
+                    time.sleep(0.5)
+                    continue
                 team_name = input("Nhập tên đội: ")
                 coach = input("Nhập tên huấn luyện viên: ")
                 try:
@@ -115,8 +121,9 @@ while True:
                 except ValueError as e:
                     print(f"Lỗi khi tìm đội cùng ID: {e}")
                     continue
+                playerrem_id = input("Nhập ID thành viên muốn xóa: ")
                 try:
-                    team_to_rem.remove_player(teamrem_id)
+                    team_to_rem.remove_player(playerrem_id)
                 except ValueError as e:
                     print(f"Lỗi khi xóa thành viên: {e}")
             #--------------------------------------------------------------------------------------------------
@@ -176,7 +183,7 @@ while True:
                         score_type = input("Nhập loại ghi bàn: ")
                         points = input("Nhập số điểm: ")
                         try:
-                            i.add_score_event(ScoreEvent(time, score_team, score_type, points))
+                            m.add_score_event(ScoreEvent(time, score_team, score_type, points))
                             print("Đã thêm sự kiện ghi bàn.")
                         except ValueError as e:
                             print(f"Lỗi khi thêm sự kiện: {e}")
@@ -214,11 +221,3 @@ while True:
         print("Không hợp lệ.")
         time.sleep(0.5)
         continue
-
-
-
-
-#========================================
-while menu:
-    menu()
-#========================================
